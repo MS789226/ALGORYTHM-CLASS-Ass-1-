@@ -1,0 +1,48 @@
+PaintingCompany {
+
+    // Constants
+    private static final int SQUARE_FEET_PER_GALLON = 300;
+    private static final int LABOR_HOURS_PER_GALLON = 8;
+    private static final double LABOR_RATE_PER_HOUR = 20.0;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input Room Dimensions
+        double roomHeight = getRoomHeight(scanner);
+        double roomWidth = getRoomWidth(scanner);
+        double doorHeight = getDoorHeight(scanner);
+        double doorWidth = getDoorWidth(scanner);
+        int numberOfWalls = getNumberOfWalls(scanner);
+        int numberOfDoors = getNumberOfDoors(scanner);
+        double paintPricePerGallon = getPaintPrice(scanner);
+
+        // Calculate Areas
+        double wallArea = calculateWallArea(roomHeight, roomWidth, numberOfWalls);
+        double doorArea = calculateDoorArea(doorHeight, doorWidth, numberOfDoors);
+        double paintableArea = wallArea - doorArea;
+
+        // Calculate Requirements
+        double gallonsOfPaintRequired = calculateGallonsOfPaintRequired(paintableArea);
+        double hoursOfLabourRequired = calculateHoursOfLabourRequired(gallonsOfPaintRequired);
+        double costOfPaint = calculateCostOfPaint(gallonsOfPaintRequired, paintPricePerGallon);
+        double labourCharges = calculateLabourCharges(hoursOfLabourRequired);
+        double totalCost = calculateTotalCost(costOfPaint, labourCharges);
+
+        // Display Results
+        displayResults(gallonsOfPaintRequired, hoursOfLabourRequired, costOfPaint, labourCharges, totalCost);
+        
+        scanner.close();
+    }
+
+    private static double getRoomHeight(Scanner scanner) {
+        System.out.print("Enter the height of the room in feet: ");
+        return scanner.nextDouble();
+    }
+
+    private static double getRoomWidth(Scanner scanner) {
+        System.out.print("Enter the width of the room in feet: ");
+        return scanner.nextDouble();
+    }
+
+    private static double getDoorHeight(Scanner scanner)
