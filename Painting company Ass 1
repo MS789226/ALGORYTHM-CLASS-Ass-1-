@@ -1,4 +1,6 @@
-PaintingCompany {
+PaintingCompany
+
+{
 
     // Constants
     private static final int SQUARE_FEET_PER_GALLON = 300;
